@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block auth_content %}
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f1f5f9;">
+    <div class="card" style="width: 400px; padding: 40px;">
+        <h2 style="text-align: center; color: #2563eb; margin-bottom: 30px;">FirstStep Login</h2>
+        
+        <div style="display: flex; gap: 10px; margin-bottom: 20px; justify-content: center;">
+            <button onclick="showForm('login')" class="btn" style="background: #e2e8f0; color: #333; width: auto;">Login</button>
+            <button onclick="showForm('signup')" class="btn" style="background: #e2e8f0; color: #333; width: auto;">Sign Up</button>
+        </div>
+
+        <form id="login-form" method="POST">
+            <input type="hidden" name="action" value="login">
+            <div style="margin-bottom: 15px;">
+                <label>Email Address</label>
+                <input type="email" name="email" required>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label>Password</label>
+                <input type="password" name="password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+
+        <form id="signup-form" method="POST" style="display: none;">
+            <input type="hidden" name="action" value="signup">
+            <div style="margin-bottom: 15px;">
+                <label>Full Name</label>
+                <input type="text" name="name" required>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label>Email Address</label>
+                <input type="email" name="email" required>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label>Password</label>
+                <input type="password" name="password" required>
+            </div>
+            <button type="submit" class="btn">Create Account</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function showForm(type) {
+        document.getElementById('login-form').style.display = type === 'login' ? 'block' : 'none';
+        document.getElementById('signup-form').style.display = type === 'signup' ? 'block' : 'none';
+    }
+</script>
+{% endblock %}

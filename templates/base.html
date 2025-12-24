@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FirstStep - Resume Helper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    {% if current_user.is_authenticated %}
+    <div class="sidebar">
+        <div class="brand">FirstStep</div>
+        
+        <ul class="nav-links">
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('ats_tool') }}">Check Resume Score</a></li>
+            <li><a href="{{ url_for('resume_builder') }}">Create Resume</a></li>
+        </ul>
+        
+        <div class="user-footer">
+            <small style="color: #64748b;">Logged in as:</small><br>
+            <strong>{{ current_user.name }}</strong><br>
+            <a href="{{ url_for('logout') }}" style="color: #ef4444; text-decoration: none; font-size: 0.9rem; margin-top: 5px; display: block;">Logout</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="card" style="padding: 15px; margin-bottom: 20px; border-left: 5px solid {{ '#10b981' if category=='success' else '#ef4444' }}; background: white;">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    {% else %}
+        {% block auth_content %}{% endblock %}
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ resume.full_name }} - Resume</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background: #525659;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .page {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            box-sizing: border-box;
+        }
+        h1 { text-align: center; text-transform: uppercase; margin: 0 0 5px 0; font-size: 24pt; }
+        .contact { text-align: center; margin-bottom: 20px; border-bottom: 1px solid #000; padding-bottom: 15px; font-size: 10pt; }
+        
+        h2 { 
+            font-size: 12pt; 
+            text-transform: uppercase; 
+            border-bottom: 1px solid #ccc; 
+            margin-top: 20px; 
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        p { font-size: 11pt; line-height: 1.5; white-space: pre-line; margin: 5px 0; text-align: justify; }
+        
+        .download-btn {
+            position: fixed; top: 20px; right: 20px;
+            background: #2563eb; color: white; border: none;
+            padding: 12px 25px; cursor: pointer; border-radius: 5px; 
+            font-family: sans-serif; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .download-btn:hover { background: #1e40af; }
+
+        @media print {
+            body { background: white; padding: 0; margin: 0; }
+            .page { width: 100%; margin: 0; padding: 0; box-shadow: none; padding: 15mm; }
+            .download-btn { display: none; }
+            @page { margin: 0; }
+        }
+    </style>
+</head>
+<body>
+    <button onclick="window.print()" class="download-btn">Download PDF</button>
+
+    <div class="page">
+        <h1>{{ resume.full_name }}</h1>
+        <div class="contact">
+            {{ resume.email }} | {{ resume.phone }} <br>
+            {{ resume.linkedin }}
+        </div>
+
+        {% if resume.summary %}
+        <h2>Professional Summary</h2>
+        <p>{{ resume.summary }}</p>
+        {% endif %}
+
+        {% if resume.education %}
+        <h2>Education</h2>
+        <p>{{ resume.education }}</p>
+        {% endif %}
+
+        {% if resume.skills %}
+        <h2>Skills</h2>
+        <p>{{ resume.skills }}</p>
+        {% endif %}
+
+        {% if resume.experience %}
+        <h2>Experience & Projects</h2>
+        <p>{{ resume.experience }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

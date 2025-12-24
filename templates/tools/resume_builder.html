@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card" style="max-width: 850px; margin: 0 auto;">
+    <h2 style="color: #2563eb; margin-bottom: 25px;">Create Professional Resume</h2>
+    
+    <form method="POST">
+        <h3 style="color: #334155; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">Personal Details</h3>
+        <div class="grid-2">
+            <div>
+                <label>Full Name</label>
+                <input type="text" name="full_name" required placeholder="e.g. Rahul Sharma">
+            </div>
+            <div>
+                <label>Email</label>
+                <input type="email" name="email" required placeholder="rahul@example.com">
+            </div>
+        </div>
+        <div class="grid-2">
+            <div>
+                <label>Phone</label>
+                <input type="text" name="phone" placeholder="+91 98765 43210">
+            </div>
+            <div>
+                <label>LinkedIn URL</label>
+                <input type="text" name="linkedin" placeholder="linkedin.com/in/rahul">
+            </div>
+        </div>
+
+        <h3 style="color: #334155; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-top: 25px; margin-bottom: 15px;">Education</h3>
+        <div class="grid-2">
+            <div>
+                <label>Degree / Course</label>
+                <input type="text" name="edu_degree" required placeholder="e.g. Bachelor of Computer Applications">
+            </div>
+            <div>
+                <label>College / University</label>
+                <input type="text" name="edu_college" required placeholder="e.g. Mandsaur University">
+            </div>
+        </div>
+        <div class="grid-2">
+            <div>
+                <label>Passing Year</label>
+                <input type="text" name="edu_year" placeholder="e.g. 2023 - 2026">
+            </div>
+            <div>
+                <label>CGPA / Percentage</label>
+                <input type="text" name="edu_grade" placeholder="e.g. 8.5 CGPA">
+            </div>
+        </div>
+
+        <h3 style="color: #334155; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-top: 25px; margin-bottom: 15px;">Professional Summary</h3>
+        <textarea name="summary" rows="3" placeholder="Leave empty to let AI write it for you..."></textarea>
+
+        <h3 style="color: #334155; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-top: 25px; margin-bottom: 15px;">Skills</h3>
+        <textarea name="skills" rows="2" placeholder="Java python html sql (Commas will be added automatically)"></textarea>
+
+        <h3 style="color: #334155; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-top: 25px; margin-bottom: 15px;">Experience / Projects</h3>
+        <textarea name="experience" rows="5" placeholder="Project Name: Description..."></textarea>
+
+        <button type="submit" class="btn" style="margin-top: 30px; padding: 15px;">Generate & Download PDF</button>
+    </form>
+</div>
+{% endblock %}

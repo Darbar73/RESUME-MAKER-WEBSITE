@@ -1,0 +1,173 @@
+/* --- Global Variables --- */
+:root {
+    --primary-color: #2563eb;       /* Royal Blue */
+    --primary-dark: #1e40af;        /* Dark Blue */
+    --bg-light: #f8fafc;           /* Light Grey Background */
+    --text-dark: #1e293b;          /* Dark Text */
+    --text-grey: #64748b;          /* Grey Text */
+    --white: #ffffff;
+    --success: #10b981;            /* Green for Good Score */
+    --danger: #ef4444;             /* Red for Bad Score */
+    --sidebar-width: 260px;
+}
+
+/* --- Reset & Body --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- Sidebar Styling --- */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--white);
+    border-right: 1px solid #e2e8f0;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100%;
+}
+
+.brand {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    letter-spacing: -0.5px;
+}
+
+.nav-links { list-style: none; }
+.nav-links li { margin-bottom: 8px; }
+
+.nav-links a {
+    display: block;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: var(--text-grey);
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    background-color: #eff6ff;
+    color: var(--primary-color);
+}
+
+.user-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* --- Main Content Area --- */
+.main-content {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+    padding: 40px;
+    width: calc(100% - var(--sidebar-width));
+}
+
+/* --- Dashboard Widgets --- */
+.welcome-box {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* --- Cards --- */
+.card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f1f5f9;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.action-card {
+    border-left: 5px solid var(--primary-color);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 { color: var(--text-dark); margin-bottom: 10px; font-size: 1.3rem; }
+.card p { color: var(--text-grey); line-height: 1.6; margin-bottom: 15px; }
+
+.link-text {
+    color: var(--primary-color);
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* --- History List --- */
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.history-item:last-child { border-bottom: none; }
+
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+}
+
+.badge-good { background-color: var(--success); }
+.badge-avg { background-color: var(--danger); }
+
+/* --- Forms & Inputs --- */
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-family: inherit;
+}
+
+.btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.btn:hover { background-color: var(--primary-dark); }

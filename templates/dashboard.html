@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    
+    <div class="welcome-box">
+        <h2>Welcome, {{ user.name }}</h2>
+        <p>Manage your resumes and check ATS scores efficiently.</p>
+    </div>
+
+    <div class="grid-2">
+        <a href="{{ url_for('ats_tool') }}" class="card action-card">
+            <h3>Check Resume Score</h3>
+            <p>Upload your resume PDF and Job Description to get an AI analysis score.</p>
+            <span class="link-text">Open Scanner &rarr;</span>
+        </a>
+
+        <a href="{{ url_for('resume_builder') }}" class="card action-card">
+            <h3>Create Resume</h3>
+            <p>Fill in a simple form to generate a professional Harvard-style PDF resume.</p>
+            <span class="link-text">Start Building &rarr;</span>
+        </a>
+    </div>
+
+    <div class="card">
+        <h3 style="border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">Recent Activity</h3>
+        
+        {% if scans %}
+            {% for item in scans %}
+            <div class="history-item">
+                <div>
+                    <strong>ATS Scan Result</strong><br>
+                    <small style="color: #94a3b8;">{{ item.scan.created_at.strftime('%d %b, %I:%M %p') }}</small>
+                </div>
+                <div class="badge {{ 'badge-good' if item.scan.score > 70 else 'badge-avg' }}">
+                    {{ item.scan.score }}
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div style="text-align: center; padding: 20px; color: #94a3b8;">
+                No history found. Start by scanning a resume.
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}
